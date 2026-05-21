@@ -1,0 +1,1102 @@
+{
+  "info": {
+    "_postman_id": "ca5eb8d0-593c-4cba-bb09-89033aaf7a0b",
+    "name": "Backend Intern API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55042240"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "auth",
+              "item": [
+                {
+                  "name": "login",
+                  "item": [
+                    {
+                      "name": "v1 auth login create",
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/auth/login/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "auth",
+                            "login",
+                            ""
+                          ]
+                        },
+                        "description": "POST /api/v1/auth/login/\n\nPublic endpoint. Accepts email and password.\nOn success returns a JWT access token, refresh token, and\nbasic user data. Returns 401 on invalid credentials."
+                      },
+                      "response": [
+                        {
+                          "name": "No response body",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/auth/login/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "auth",
+                                "login",
+                                ""
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "body": ""
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "me",
+                  "item": [
+                    {
+                      "name": "v1 auth me retrieve",
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/auth/me/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "auth",
+                            "me",
+                            ""
+                          ]
+                        },
+                        "description": "GET /api/v1/auth/me/\n\nProtected endpoint. Requires a valid JWT Bearer token.\nReturns the currently authenticated user's profile data.\nUsed by the frontend to verify the session and display user info."
+                      },
+                      "response": [
+                        {
+                          "name": "No response body",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/auth/me/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "auth",
+                                "me",
+                                ""
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "body": ""
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "refresh",
+                  "item": [
+                    {
+                      "name": "v1 auth refresh create",
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"refresh\": \"string\",\n  \"access\": 5053\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/auth/refresh/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "auth",
+                            "refresh",
+                            ""
+                          ]
+                        },
+                        "description": "Takes a refresh type JSON web token and returns an access type JSON web\ntoken if the refresh token is valid."
+                      },
+                      "response": [
+                        {
+                          "name": "200",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"refresh\": \"string\",\n  \"access\": 5053\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/auth/refresh/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "auth",
+                                "refresh",
+                                ""
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"access\": \"string\",\n  \"refresh\": \"string\"\n}"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "register",
+                  "item": [
+                    {
+                      "name": "v1 auth register create",
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"nsE@srgVsCKhn.dofx\",\n  \"password\": \"string\",\n  \"password2\": \"string\",\n  \"username\": \"8RuGMA\",\n  \"role\": \"user\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/auth/register/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "auth",
+                            "register",
+                            ""
+                          ]
+                        },
+                        "description": "POST /api/v1/auth/register/\n\nPublic endpoint. Accepts username, email, password, password2,\nand optional role. Creates a new user and returns 201 on success.\nReturns 400 with field-level errors if validation fails."
+                      },
+                      "response": [
+                        {
+                          "name": "201",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"email\": \"nsE@srgVsCKhn.dofx\",\n  \"password\": \"string\",\n  \"password2\": \"string\",\n  \"username\": \"8RuGMA\",\n  \"role\": \"user\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/auth/register/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "auth",
+                                "register",
+                                ""
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"email\": \"cJhD@cLgVtDxUWzudtMPVHgvPETFtOdS.dbmn\",\n  \"username\": \"n6-KjU\",\n  \"role\": \"admin\",\n  \"password\": \"string\"\n}"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "tasks",
+              "item": [
+                {
+                  "name": "{id}",
+                  "item": [
+                    {
+                      "name": "v1 tasks retrieve",
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/tasks/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "tasks",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "3439"
+                            }
+                          ]
+                        },
+                        "description": "GET    /api/v1/tasks/:id/  — Retrieve a single task.\nPUT    /api/v1/tasks/:id/  — Full update of a task.\nPATCH  /api/v1/tasks/:id/  — Partial update (e.g. status only).\nDELETE /api/v1/tasks/:id/  — Delete a task.\n\nAccess is restricted by IsOwnerOrAdmin — only the task's owner\nor an admin can perform these operations. Returns 403 otherwise."
+                      },
+                      "response": [
+                        {
+                          "name": "200",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/tasks/:id/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "tasks",
+                                ":id",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "3439"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"created_at\": \"2002-08-02T18:00:35.635Z\",\n  \"id\": 1332,\n  \"owner_email\": \"LU4Vc4jJ7NJ@GcSxuMa.qf\",\n  \"title\": \"string\",\n  \"updated_at\": \"1956-07-28T19:07:57.624Z\",\n  \"description\": \"string\",\n  \"status\": \"pending\"\n}"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "v1 tasks update",
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"done\",\n  \"created_at\": 4196.7748553217525,\n  \"id\": true\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/tasks/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "tasks",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "3439"
+                            }
+                          ]
+                        },
+                        "description": "GET    /api/v1/tasks/:id/  — Retrieve a single task.\nPUT    /api/v1/tasks/:id/  — Full update of a task.\nPATCH  /api/v1/tasks/:id/  — Partial update (e.g. status only).\nDELETE /api/v1/tasks/:id/  — Delete a task.\n\nAccess is restricted by IsOwnerOrAdmin — only the task's owner\nor an admin can perform these operations. Returns 403 otherwise."
+                      },
+                      "response": [
+                        {
+                          "name": "200",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"done\",\n  \"created_at\": 4196.7748553217525,\n  \"id\": true\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/tasks/:id/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "tasks",
+                                ":id",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "3439"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"created_at\": \"2002-08-02T18:00:35.635Z\",\n  \"id\": 1332,\n  \"owner_email\": \"LU4Vc4jJ7NJ@GcSxuMa.qf\",\n  \"title\": \"string\",\n  \"updated_at\": \"1956-07-28T19:07:57.624Z\",\n  \"description\": \"string\",\n  \"status\": \"pending\"\n}"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "v1 tasks partial update",
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"done\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/tasks/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "tasks",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "3439"
+                            }
+                          ]
+                        },
+                        "description": "GET    /api/v1/tasks/:id/  — Retrieve a single task.\nPUT    /api/v1/tasks/:id/  — Full update of a task.\nPATCH  /api/v1/tasks/:id/  — Partial update (e.g. status only).\nDELETE /api/v1/tasks/:id/  — Delete a task.\n\nAccess is restricted by IsOwnerOrAdmin — only the task's owner\nor an admin can perform these operations. Returns 403 otherwise."
+                      },
+                      "response": [
+                        {
+                          "name": "200",
+                          "originalRequest": {
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"done\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/tasks/:id/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "tasks",
+                                ":id",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "3439"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"created_at\": \"2002-08-02T18:00:35.635Z\",\n  \"id\": 1332,\n  \"owner_email\": \"LU4Vc4jJ7NJ@GcSxuMa.qf\",\n  \"title\": \"string\",\n  \"updated_at\": \"1956-07-28T19:07:57.624Z\",\n  \"description\": \"string\",\n  \"status\": \"pending\"\n}"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "v1 tasks destroy",
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/tasks/:id/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "tasks",
+                            ":id",
+                            ""
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "3439"
+                            }
+                          ]
+                        },
+                        "description": "GET    /api/v1/tasks/:id/  — Retrieve a single task.\nPUT    /api/v1/tasks/:id/  — Full update of a task.\nPATCH  /api/v1/tasks/:id/  — Partial update (e.g. status only).\nDELETE /api/v1/tasks/:id/  — Delete a task.\n\nAccess is restricted by IsOwnerOrAdmin — only the task's owner\nor an admin can perform these operations. Returns 403 otherwise."
+                      },
+                      "response": [
+                        {
+                          "name": "No response body",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/tasks/:id/",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "tasks",
+                                ":id",
+                                ""
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "3439"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "body": ""
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "v1 tasks list",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/tasks/?ordering=string&search=string",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "tasks",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "key": "ordering",
+                          "value": "string",
+                          "description": "Which field to use when ordering the results."
+                        },
+                        {
+                          "key": "search",
+                          "value": "string",
+                          "description": "A search term."
+                        }
+                      ]
+                    },
+                    "description": "GET  /api/v1/tasks/   — List tasks for the current user.\nPOST /api/v1/tasks/   — Create a new task owned by the current user.\n\nAdmins receive all tasks across all users.\nRegular users receive only their own tasks.\n\nSupports:\n    - ?search=<query>  filters by title or status\n    - ?ordering=created_at or ?ordering=status"
+                  },
+                  "response": [
+                    {
+                      "name": "200",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/tasks/?ordering=string&search=string",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "tasks",
+                            ""
+                          ],
+                          "query": [
+                            {
+                              "description": "Which field to use when ordering the results.",
+                              "key": "ordering",
+                              "value": "string"
+                            },
+                            {
+                              "description": "A search term.",
+                              "key": "search",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"created_at\": \"1970-01-06T02:20:03.029Z\",\n    \"id\": 4632,\n    \"owner_email\": \"x3ZcJSF2Gb3osx@dONtiyJxVzqGalyaiSHrTyAgKKREbIK.bjqi\",\n    \"title\": \"string\",\n    \"updated_at\": \"2016-11-30T18:33:32.491Z\",\n    \"description\": \"string\",\n    \"status\": \"pending\"\n  },\n  {\n    \"created_at\": \"1986-07-09T03:05:49.525Z\",\n    \"id\": 5368,\n    \"owner_email\": \"a6YPzm@nMkWOvcnwjltdCWyIzmVKKVeeWVWRkdt.phtx\",\n    \"title\": \"string\",\n    \"updated_at\": \"1992-02-04T03:26:25.934Z\",\n    \"description\": \"string\",\n    \"status\": \"pending\"\n  }\n]"
+                    }
+                  ]
+                },
+                {
+                  "name": "v1 tasks create",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"done\",\n  \"created_at\": 4196.7748553217525,\n  \"id\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/tasks/",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "tasks",
+                        ""
+                      ]
+                    },
+                    "description": "GET  /api/v1/tasks/   — List tasks for the current user.\nPOST /api/v1/tasks/   — Create a new task owned by the current user.\n\nAdmins receive all tasks across all users.\nRegular users receive only their own tasks.\n\nSupports:\n    - ?search=<query>  filters by title or status\n    - ?ordering=created_at or ?ordering=status"
+                  },
+                  "response": [
+                    {
+                      "name": "201",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"done\",\n  \"created_at\": 4196.7748553217525,\n  \"id\": true\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/tasks/",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "tasks",
+                            ""
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"created_at\": \"2002-08-02T18:00:35.635Z\",\n  \"id\": 1332,\n  \"owner_email\": \"LU4Vc4jJ7NJ@GcSxuMa.qf\",\n  \"title\": \"string\",\n  \"updated_at\": \"1956-07-28T19:07:57.624Z\",\n  \"description\": \"string\",\n  \"status\": \"pending\"\n}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "schema",
+          "item": [
+            {
+              "name": "schema retrieve",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.oai.openapi"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/schema/?format=json&lang=ro",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "schema",
+                    ""
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "ro"
+                    }
+                  ]
+                },
+                "description": "OpenApi3 schema for this API. Format can be selected via content negotiation.\n\n- YAML: application/vnd.oai.openapi\n- JSON: application/vnd.oai.openapi+json"
+              },
+              "response": [
+                {
+                  "name": "200",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/vnd.oai.openapi"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/schema/?format=json&lang=ro",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "schema",
+                        ""
+                      ],
+                      "query": [
+                        {
+                          "key": "format",
+                          "value": "json"
+                        },
+                        {
+                          "key": "lang",
+                          "value": "ro"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"key_0\": 8140.665198360097\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

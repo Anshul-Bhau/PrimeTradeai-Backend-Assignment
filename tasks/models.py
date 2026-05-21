@@ -3,7 +3,19 @@ from django.conf import settings
 # Create your models here.
 
 class Task(models.Model):
+    """
+    Represents a task owned by a user.
+
+    Attributes:
+        owner (User): The user who created and owns this task.
+        title (str): Short label for the task (max 255 chars).
+        description (str): Optional longer description.
+        status (str): Current state — pending, in_progress, or done.
+        created_at (datetime): Timestamp set on creation.
+        updated_at (datetime): Timestamp updated on every save.
+    """
     class Status(models.TextChoices):
+        """Valid status values for a task."""
         PENDING = 'pending', 'Pending'
         IN_PROGRESS = 'in_progress', 'In Progress'
         DONE = 'done', 'Done'

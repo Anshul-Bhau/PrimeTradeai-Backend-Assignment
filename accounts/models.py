@@ -3,6 +3,12 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class User(AbstractUser):
+    """
+    Custom user model extending Django's AbstractUser.
+    Attributes:
+        role (str): Either 'user' (default) or 'admin'.
+        email (str): Unique email address used for authentication.
+        """
     class Role(models.TextChoices):
         USER = 'user', 'User'
         ADMIN = 'admin', 'Admin'
@@ -14,6 +20,7 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['username']
 
     def is_admin(self):
+        """Return True if this user has the admin role."""
         return self.role == self.Role.ADMIN
     
     def __str__(self):

@@ -23,7 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
 ALLOWED_HOSTS = ['*']
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default = False, cast=bool)
@@ -74,7 +73,8 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
     'DEFAULT_VERSION': 'v1',
-    'ALLOWED_VERSIONS': ['v1'],
+    'ALLOWED_VERSIONS': ['v1', 'v2'],
+    'EXCEPTION_HANDLER' : 'tasks.utils.custom_exception_handler',
 }
 
 from datetime import timedelta

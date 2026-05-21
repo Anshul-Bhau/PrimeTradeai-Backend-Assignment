@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Manager - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <h1>Task Manager</h1>
+
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('login')">Login</button>
+      <button class="tab" onclick="showTab('register')">Register</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div id="login-tab">
+      <input type="email" id="login-email" placeholder="Email">
+      <input type="password" id="login-password" placeholder="Password">
+      <button onclick="login()">Login</button>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div id="register-tab" style="display:none">
+      <input type="text" id="reg-username" placeholder="Username">
+      <input type="email" id="reg-email" placeholder="Email">
+      <input type="password" id="reg-password" placeholder="Password">
+      <input type="password" id="reg-password2" placeholder="Confirm Password">
+      <button onclick="register()">Register</button>
+    </div>
+
+    <p id="auth-message" class="message"></p>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
